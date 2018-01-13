@@ -3,96 +3,96 @@ This guide is intended to take you step-by-step into adding a meet into the data
 
 ## Prerequisites
 1. Ubuntu (see Instructions for Setting Up the Project on Windows steps 1-8)
-   •Automake
-   •Git
-   •Clone of repo
-   •sqlite 3
-   •npm
-   •node
+<br><p>   â€¢Automake
+<br><p>  â€¢Git
+<br><p>   â€¢Clone of repo
+<br><p>   â€¢sqlite 3
+<br><p>   â€¢npm
+<br><p>   â€¢node
 
 ## Part 1: Creating `meet.csv`, `entries.csv`, `URL`,  and `results.txt` files
-*Important* before you get started, remember `meet.csv`, `entries.csv`, and `URL` files need to be saved in the same folder.
+<b>Important</b> before you get started, remember `meet.csv`, `entries.csv`, and `URL` files need to be saved in the same folder.
 
 ### Step 1: Create the `meet.csv` file (In Excel, LibreOffice, or another spreadsheet program)
 1. Use the following format for creating the meet.csv file.
-   •In the first row:
-      •The first column should be labeled `Federation`.
-      •The next column should be labeled `Date`.
-      •The next column should be labeled `MeetCountry`.
-      •The next column should be labeled `MeetState`.
-      •The next column should be labeled `MeetTown`.
-      •The next column should be labeled `MeetName`.
-   •In the second row:
-      •The first column should contain the abbreviation of the federation (e.g. `USPF`) from which the meet you are adding is sanctioned by.
-      •The next column should contain the date of the meet you are adding in the format of YEAR-MONTH-DATE (e.g. `2018-01-01`).
-      •The next column should contain the abbreviation of the country (e.g. `USA`) where the meet took place.
-      •The next column should contain the abbreviation of the state/province (e.g. `CA`) where the meet took place.
-      •The next column should contain the name of the town/city where the meet took place (e.g. `Burbank`).
-      •The next column should contain the name of the meet you are adding (e.g. `2000 USPF National Powerlifting and Bench Press Championships`).
+<br><p>â€¢In the first row:
+<br><p><p>â€¢The first column should be labeled `Federation`.
+<br><p><p>  â€¢The next column should be labeled `Date`.
+<br><p><p>   â€¢The next column should be labeled `MeetCountry`.
+<br><p><p>   â€¢The next column should be labeled `MeetState`.
+<br><p><p>   â€¢The next column should be labeled `MeetTown`.
+<br><p><p>   â€¢The next column should be labeled `MeetName`.
+<br><p>â€¢In the second row:
+<br><p><p>   â€¢The first column should contain the abbreviation of the federation (e.g. `USPF`) from which the meet you are adding is sanctioned by.
+<br><p><p>   â€¢The next column should contain the date of the meet you are adding in the format of YEAR-MONTH-DATE (e.g. `2018-01-01`).
+<br><p><p>   â€¢The next column should contain the abbreviation of the country (e.g. `USA`) where the meet took place.
+<br><p><p>   â€¢The next column should contain the abbreviation of the state/province (e.g. `CA`) where the meet took place.
+<br><p><p>  â€¢The next column should contain the name of the town/city where the meet took place (e.g. `Burbank`).
+<br><p><p>   â€¢The next column should contain the name of the meet you are adding (e.g. `2000 USPF National Powerlifting and Bench Press Championships`).
 2. Save the file as `meet.csv`in its own folder (you will be saving the next two files into the same folder).
 
 For meets that are in pounds:
    1. Change anything `Kg` to `LBS`.
    2. Once completed with step two of part two open Ubuntu and go to the directory you just added
-      •Go to the federation's directory for which you are trying to add a meet.
-         •Type: `cd openpowerlifting`
-         •Type: `cd meet-data`
-         •Type: `cd ${FEDNAME}`
-      •Go to the directory you just added. 
-         •Type: `cd ${DIRNAME}`
-   3. Run `../../../scripts/csv-tokg entries.csv`
-   4. Run `../../../scripts/fix-weightclasses entries.csv`
+<br><p>      â€¢Go to the federation's directory for which you are trying to add a meet.
+<br><p><p>        â€¢Type: `cd openpowerlifting`.
+<br><p><p>        â€¢Type: `cd meet-data`.
+<br><p><p>       â€¢Type: `cd ${FEDNAME}`,
+<br><p>     â€¢Go to the directory you just added. 
+<br><p><p>         â€¢Type: `cd ${DIRNAME}`
+   3. Run `../../../scripts/csv-tokg entries.csv`.
+   4. Run `../../../scripts/fix-weightclasses entries.csv`.
 
 ### Step 2: Creating the `entries.csv` file (In Excel, LibreOffice, or another spreadsheet program)
 1. Use the following format for creating the `entries.csv` file. Order of the columns does not matter, but the order below is most convenient
-   •In the first row:
-      •The first column should be labeled `Place`.
-      •The next column should be labeled `Name`.
-      •The next column should be labeled `Sex`.
-      •The next column should be labeled `Event`.
-      •The next column should be labeled `Division`.
-      •The next column should be labeled `WeightClassKg`.
-      •The next column should be labeled `Equipment`.
-      •The next column should be labeled `BirthYear` or `Age`, depending on the federation, if reported.
-      •The next column should be labeled `State` if reported.
-      •The next column should be labeled `BodyweightKg`.
-      •The next column should be labeled `Squat1Kg` if reported.
-      •The next column should be labeled `Squat2Kg` if reported.
-      •The next column should be labeled `Squat3Kg`.
-      •The next column should be labeled `BestSquatKg`.
-      •The next column should be labeled `Bench1Kg` if reported.
-      •The next column should be labeled `Bench2Kg` if reported.
-      •The next column should be labeled `Bench3Kg` if reported.
-      •The next column should be labeled `BestBenchKg`.
-      •The next column should be labeled `Deadlift1Kg` if reported.
-      •The next column should be labeled `Deadlift2Kg` if reported.
-      •The next column should be labeled `Deadlift3Kg` if reported.
-      •The next column should be labeled `BestDeadliftKg`.
-      •The next column should be labeled `TotalKg`.
-   •In subsequent rows:
-      •The first column should contain the placing of the competitor in the meet (e.g. `1`).
-      •The next column should contain the name of the competitor (e.g. `John Doe`).
-      •The next column should contain the sex of the competitor. `M` for male and `F` for female.
-      •The next column should contain the lifts that the competitor performed (e.g. `SBD`, `BD`, `B`, OR `D`). `S` is squat, `B` is bench, and `D` is deadlift. 
-      •The next column should contain the division that the competitor competed in. This is written as the federation reported it (e.g. `R-O` or `Sub Master Men`).
-      •The next column should contain the weight class of the competitor, in kilograms (e.g. `100`).
-      •The next column should contain the equipment used by the competitor. `Raw`, `Wraps`, `Single-ply`, and `Multi-ply` are the equipment types.
-      •The next column should contain the year the competitor was born (e.g. `1991`) or the age of the competitor at the competition (e.g. `43`), depending on the federation, if reported.
-      •The next column should contain the state/province abbreviation from where the competitor is competing from (e.g. `VA`) if reported.
-      •The next column should contain the bodyweight of the competitor in kilograms (e.g. `102.2`).
-      •The next column should contain the competitor's first attempt squat in kilograms `Squat1Kg` if reported.
-      •The next column should contain the competitor's second attempt in kilograms `Squat2Kg` if reported.
-      •The next column should contain the competitor's third attempt in kilograms `Squat3Kg` if reported.
-      •The next column should contain the competitor's best squat attempt in kilograms `BestSquatKg`.
-      •The next column should contain the competitor's first attempt in kilograms `Bench1Kg` if reported.
-      •The next column should contain the competitor's second attempt in kilograms `Bench2Kg` if reported.
-      •The next column should contain the competitor's third attempt in kilograms `Bench3Kg` if reported.
-      •The next column should contain the competitor's best bench press attempt in kilograms `BestBenchKg`.
-      •The next column should contain the competitor's first attempt in kilograms `Deadlift1Kg` if reported.
-      •The next column should contain the competitor's second attempt in kilograms `Deadlift2Kg` if reported.
-      •The next column should contain the competitor's third attempt in kilograms `Deadlift3Kg` if reported.
-      •The next column should contain the competitor's best deadlift attempt in kilograms `BestDeadliftKg`.
-      •The next column should contain the competitor's total in kilograms `TotalKg`.
+<br><p>   â€¢In the first row:
+<br><p><p>     â€¢The first column should be labeled `Place`.
+<br> <p><p>    â€¢The next column should be labeled `Name`.
+<br><p><p>    â€¢The next column should be labeled `Sex`.
+<br><p><p>  â€¢The next column should be labeled `Event`.
+<br><p><p>      â€¢The next column should be labeled `Division`.
+<br><p><p>      â€¢The next column should be labeled `WeightClassKg`.
+<br><p><p>      â€¢The next column should be labeled `Equipment`.
+<br><p><p>      â€¢The next column should be labeled `BirthYear` or `Age`, depending on the federation, if reported.
+<br><p><p>      â€¢The next column should be labeled `State` if reported.
+<br><p><p>      â€¢The next column should be labeled `BodyweightKg`.
+<br><p><p>      â€¢The next column should be labeled `Squat1Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `Squat2Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `Squat3Kg`.
+<br><p><p>      â€¢The next column should be labeled `BestSquatKg`.
+<br><p><p>      â€¢The next column should be labeled `Bench1Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `Bench2Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `Bench3Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `BestBenchKg`.
+<br><p><p>     â€¢The next column should be labeled `Deadlift1Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `Deadlift2Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `Deadlift3Kg` if reported.
+<br><p><p>      â€¢The next column should be labeled `BestDeadliftKg`.
+<br><p><p>      â€¢The next column should be labeled `TotalKg`.
+<br><p>   â€¢In subsequent rows:
+<br><p><p>     â€¢The first column should contain the placing of the competitor in the meet (e.g. `1`).
+<br><p><p>      â€¢The next column should contain the name of the competitor (e.g. `John Doe`).
+<br><p><p>      â€¢The next column should contain the sex of the competitor. `M` for male and `F` for female.
+<br><p><p>      â€¢The next column should contain the lifts that the competitor performed (e.g. `SBD`, `BD`, `B`, OR `D`). `S` is squat, `B` is bench, and `D` is deadlift. 
+<br><p><p>      â€¢The next column should contain the division that the competitor competed in. This is written as the federation reported it (e.g. `R-O` or `Sub Master Men`).
+<br><p><p>      â€¢The next column should contain the weight class of the competitor, in kilograms (e.g. `100`).
+<br><p><p>      â€¢The next column should contain the equipment used by the competitor. `Raw`, `Wraps`, `Single-ply`, and `Multi-ply` are the equipment types.
+<br><p><p>      â€¢The next column should contain the year the competitor was born (e.g. `1991`) or the age of the competitor at the competition (e.g. `43`), depending on the federation, if reported.
+<br><p><p>      â€¢The next column should contain the state/province abbreviation from where the competitor is competing from (e.g. `VA`) if reported.
+<br><p><p>      â€¢The next column should contain the bodyweight of the competitor in kilograms (e.g. `102.2`).
+<br><p><p>      â€¢The next column should contain the competitor's first attempt squat in kilograms `Squat1Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's second attempt in kilograms `Squat2Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's third attempt in kilograms `Squat3Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's best squat attempt in kilograms `BestSquatKg`.
+<br><p><p>      â€¢The next column should contain the competitor's first attempt in kilograms `Bench1Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's second attempt in kilograms `Bench2Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's third attempt in kilograms `Bench3Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's best bench press attempt in kilograms `BestBenchKg`.
+<br><p><p>      â€¢The next column should contain the competitor's first attempt in kilograms `Deadlift1Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's second attempt in kilograms `Deadlift2Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's third attempt in kilograms `Deadlift3Kg` if reported.
+<br><p><p>      â€¢The next column should contain the competitor's best deadlift attempt in kilograms `BestDeadliftKg`.
+<br><p><p>      â€¢The next column should contain the competitor's total in kilograms `TotalKg`.
 2. Save the file as `entries.csv` in the same folder as meet.csv.
 
 Tips
@@ -114,40 +114,33 @@ This step requires that you have the URL of the `.pdf` file of the meet results.
 6. Type `ls` to figure out the name of the `.pdf` downloaded.
 7. Convert the `.pdf` file to a `.txt` file. Type `pdftotext -layout ${PDF}` (where `${PDF}` is the name of the `.pdf` file downloaded) which.
 8. Rename the `${TXT}` file to `results.txt`. Type `mv ${TXT} results.txt` (where ${TXT} is same name of the `.pdf` earlier, with a `.txt` file extension instead).
-9. Remove the `.pdf` file downloaded in step two. Type `rm *.pdf`. *Be careful* to only include no spaces between `*` and `.pdf` because `rm *.pdf` will delete all your files!
+9. Remove the `.pdf` file downloaded in step two. Type `rm *.pdf`. <b>Be careful</b> to only include no spaces between `*` and `.pdf` because `rm *.pdf` will delete all your files!
 You are now ready to upload the `entries.csv`, `results.csv`, and `URL` files created earlier.
 
 ## Part 2: Uploading meet 
 
 ### Step 1:  Add to directory (In Ubuntu)
 1. Go to the directory you just added, you are probably already there (you can check where you are by typing `pwd`). If so omit this step. Type `cd openpowerlifting/meet-data/${FEDNAME}/${DIRNAME}` (where `${FEDNAME}` is the name of the federation you are uploading to and `${DIRNAME}` is the directory you just added).
-2. Upload the folder where you stored `meet.csv`, `entries.csv`, and `URL`. Type `cp /mnt/${FILEPATH}* ./`(where ${FILEPATH} is the file path to the folder where you stored `meet.csv`, `entries.csv`, and `URL`). *Note*: if your folder includes part of the directory name use a backslash (e.g. `/Documents/open\ pl/USPF/1701/* ./`)
+2. Upload the folder where you stored `meet.csv`, `entries.csv`, and `URL`. Type `cp /mnt/${FILEPATH}* ./`(where ${FILEPATH} is the file path to the folder where you stored `meet.csv`, `entries.csv`, and `URL`). <b>Note</b>: if your folder includes part of the directory name use a backslash (e.g. `/Documents/open\ pl/USPF/1701/* ./`)
 
 ### Step 2: Check your work (In Ubuntu)
 1. You need to return to the main project directory so type `cd openpowerlifting`.
-2. Check your work. Type `make check`. You will see any errors that you have made in the data. If you have errors fix them and repeat the previous step *and this step* before continuing. If you have no errors you may continue.
+2. Check your work. Type `make check`. You will see any errors that you have made in the data. If you have errors fix them and repeat the previous step <b>and this step</b> before continuing. If you have no errors you may continue.
 
 ### Step 3: Tell `git` about changes (In Ubuntu)
 1. Tell `git` about the files you added. Type `git add meet-data/${FEDNAME}/${DIRNAME}` (where `${FEDNAME}` is the name of the federation you are uploaded to and `${DIRNAME}` is the name of the directory you created).
 2. Next, make sure you told `git` by typing `git status`, it should show the files you added.
 
 ### Step 4: Upload (In Ubuntu)
-
 1. You need to add `entries.csv` file so type `git add entries.csv`.
-
 2. You need to add `meet.csv` file so type `git add meet.csv`.
-
 3. You need to add `URL` file so type `git add URL`.
-
 4. You need to add `results.txt` file so type `git add results.txt`
-
 5. Next, commit the above files by typing `git commit -m  "${DIRNAME}" ` (where `${DIRNAME}` is the directory you just added).
-
 6. Push the above files by typing `git remote add mine ${URL_TO_YOUR_FORK}`.
-
 7. You will be asked for your GitHub username and password.
 
-###Step 5: Send pull request (On GitHub.com)
+### Step 5: Send pull request (On GitHub.com)
 1. Go to GitHub.com.
 2. Find your profile.
 3. Go to your repository.
@@ -155,7 +148,7 @@ You are now ready to upload the `entries.csv`, `results.csv`, and `URL` files cr
 
 Now you have successfully uploaded a meet!
 
-###Miscellaneous Ubuntu Tips
+### Miscellaneous Ubuntu Tips
 1. Typing `ls` will give you a list of all things under the directory that you are currently under.
 2. Typing `pwd` will tell you where you are at.
 3. Typing `cd` will return you to your home directory.
